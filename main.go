@@ -7,6 +7,10 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
+//db
+
+// auth
+
 //handlers func
 
 func main() {

@@ -11,6 +11,7 @@ import (
 //	"go-authentication-boilerplate/router"
 // doesn't work too
 //db
+db := auth.REQ
 // postgre don't work?
 
 // auth

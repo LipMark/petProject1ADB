@@ -9,8 +9,6 @@ import (
 	"net/http"
 	"strconv"
 	"strings"
-
-	"github.com/go-chi/chi/v5"
 )
 
 var (
@@ -45,8 +43,8 @@ func handleLogin(w http.ResponseWriter, r *http.Request) {
 //handlers func
 
 func main() {
-	//listen serve chi?base?
-	r := chi.NewRouter()
+	//mux serv
+
 	// serve-up
 	if err := http.ListenAndServe(":8080", r); err != nil {
 		fmt.Printf("Ошибка при запуске сервера: %s", err.Error())

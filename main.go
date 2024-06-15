@@ -82,6 +82,7 @@ func home(rw http.ResponseWriter, r *http.Request) {
 		todolist.DoneToDo(toDoID)
 		http.Redirect(rw, r, "/", http.StatusFound)
 		break
+		// handling check
 	default:
 		break
 	}

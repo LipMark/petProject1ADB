@@ -83,6 +83,7 @@ func home(rw http.ResponseWriter, r *http.Request) {
 		http.Redirect(rw, r, "/", http.StatusFound)
 		break
 		// handling check
+		// remake db
 	default:
 		break
 	}

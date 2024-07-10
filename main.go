@@ -87,4 +87,5 @@ func home(rw http.ResponseWriter, r *http.Request) {
 	default:
 		break
 	}
+	// makeit end
 }

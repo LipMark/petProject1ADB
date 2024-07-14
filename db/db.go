@@ -3,15 +3,24 @@ package db
 import (
 	"fmt"
 	"log"
+	"os"
 
+	"github.com/LipMark/petProject1ADB/models"
 	"github.com/jinzhu/gorm"
 )
 
 var db *gorm.DB
 var err error
 
+func getEnv(key, identify string) string {
+	if value, ok := os.LookupEnv(key); ok {
+		return value
+	}
+	return identify
+}
+
 func Init() {
-	user := getEnv("PG_USER", "hugo")
+	user := getEnv("PG_USER", "user123")
 	password := getEnv("PG_PASSWORD", "")
 	host := getEnv("PG_HOST", "localhost")
 	port := getEnv("PG_PORT", "8080")

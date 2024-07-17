@@ -59,33 +59,10 @@ func main() {
 
 // templ from git
 func home(rw http.ResponseWriter, r *http.Request) {
-	switch r.Method {
-	case "GET":
-		toDos := todolist.LoadAllToDo()
-
-		err := templates.ExecuteTemplate(rw, "home", types.LoadAllToDoData{ToDos: toDos})
-		if err != nil {
-			http.Error(rw, err.Error(), http.StatusBadRequest)
-		}
-		break
-	case "POST":
-		res, err := io.ReadAll(r.Body)
-		if err != nil {
-			panic(err.Error())
-		}
-		id := fmt.Sprintf("%s", res)
-		getID := strings.Split(id, "=")
-		toDoID, err := strconv.Atoi(getID[1])
-		if err != nil {
-			panic(err.Error())
-		}
-		todolist.DoneToDo(toDoID)
-		http.Redirect(rw, r, "/", http.StatusFound)
-		break
+// TODO 
+// REMAKE CRUD
 		// handling check
 		// remake db
-	default:
-		break
-	}
+
 	// makeit end
-}
+

@@ -6,8 +6,6 @@ package main
 import (
 	"fmt"
 	"net/http"
-
-	"github.com/go-chi/chi"
 )
 
 var (
@@ -56,14 +54,4 @@ func main() {
 
 }
 
-// templ from git
-func todoHandlers() http.Handler {
-	router := chi.NewRouter()
-	router.Group(func(r chi.Router) {
-		r.Get("/", getTodos)
-		r.Post("/", createTodo)
-		r.Put("/{id}", updateTodo)
-		r.Delete("/{id}", deleteTodo)
-	})
-	return router
-}
+// new handlers again

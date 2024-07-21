@@ -9,10 +9,16 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
+// db requests without gorm
+// use gin
 var db *gorm.DB
 var err error
 
 func getEnv(key, identify string) string {
+	// check
+	if len(key) == 0 {
+		return ""
+	}
 	if value, ok := os.LookupEnv(key); ok {
 		return value
 	}

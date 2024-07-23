@@ -22,6 +22,9 @@ func getEnv(key, identify string) string {
 	if value, ok := os.LookupEnv(key); ok {
 		return value
 	}
+	if !ok {
+		models.checkError()
+	}
 	return identify
 }
 

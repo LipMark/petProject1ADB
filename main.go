@@ -41,7 +41,7 @@ func handleLogin(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	//mux serv
-
+	gin := r.Gin()
 	// serve-up
 	if err := http.ListenAndServe(":8080", r); err != nil {
 		fmt.Printf("Ошибка при запуске сервера: %s", err.Error())

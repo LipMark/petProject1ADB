@@ -1,57 +1,42 @@
-// не работает
-// переход на другой проект
-
 package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
+	"time"
+
+	"github.com/go-chi/chi"
+	"github.com/thedevsaddam/renderer"
+
+	"github.com/LipMark/ToDo-Go/util"
 )
 
-var (
-	USERNAME = "12345"
-	PASSWORD = "54321"
-)
+var rnd *renderer.Render
 
-// "go-authentication-boilerplate/database"
-//	"go-authentication-boilerplate/router"
-// doesn't work too
-//db
-// postgre don't work?
-
-// auth
-func handleLogin(w http.ResponseWriter, r *http.Request) {
-	username, password, ok := r.BasicAuth()
-	if !ok {
-		w.Write([]byte("something went wrong"))
-		return
-	}
-
-	isValid := (username == USERNAME) && (password == PASSWORD)
-
-	if !isValid {
-		w.Write([]byte("wrong username/password"))
-		return
-	}
-
-	w.Write([]byte("User logged in"))
+func homeHandler(rw http.ResponseWriter, r *http.Request) {
+	filePath := "./README.md"
+	err := rnd.FileView(rw, http.StatusOK, filePath, "readme.md")
+	util.CheckError(err)
 }
-
-//handlers func
 
 func main() {
-	//mux serv
-	gin := r.Gin()
-	// serve-up
-	if err := http.ListenAndServe(":8080", r); err != nil {
-		fmt.Printf("Ошибка при запуске сервера: %s", err.Error())
-		return
+
+	/*
+		router := chi.NewRouter()
+		router.Use(middleware.Logger)
+		router.Get("/", homeHandler)
+		router.Mount("/todo", routes.TodoHandlers())
+	*/
+	server := &http.Server{
+		Addr:         ":9000",
+		Handler:      chi.NewRouter(),
+		ReadTimeout:  60 * time.Second,
+		WriteTimeout: 60 * time.Second,
 	}
-	// handlers call
 
-	// mock
-	fmt.Println("test project")
-
+	fmt.Println("Server started on port", 9000)
+	if err := server.ListenAndServe(); err != nil {
+		log.Printf("listen:%s\n", err)
+	}
 }
-
-// new handlers again

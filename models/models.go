@@ -1,11 +1,21 @@
 package models
 
-import "time"
+import (
+	"time"
 
-type Task struct {
-	ID        int       `json:"id"`
-	Title     string    `json:"title" binding:"required"`
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt time.Time `json:"updated_at"`
+	"go.mongodb.org/mongo-driver/bson/primitive"
+)
+
+type TodoBSON struct {
+	ID        primitive.ObjectID `bson:"id,omitempty"`
+	Name      string             `bson:"name"`
+	Completed bool               `bson:"completed"`
+	CreatedAt time.Time          `bson:"createdat"`
+}
+
+type TodoJSON struct {
+	ID        string    `json:"id"`
+	Title     string    `json:"title"`
 	Completed bool      `json:"completed"`
+	CreatedAt time.Time `json:"created_at"`
 }

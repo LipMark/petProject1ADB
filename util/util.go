@@ -1,8 +1,8 @@
-package models
+package util
 
 import "log"
 
-func checkError(err error) {
+func CheckError(err error) {
 	if err != nil {
 		log.Fatal(err)
 	}
